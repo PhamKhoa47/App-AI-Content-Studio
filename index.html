@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Phạm Khoa 2026 | Viral Content Intelligence Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://aistudiocdn.com/react@^19.1.1",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+        "react/": "https://aistudiocdn.com/react@^19.1.1/",
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.20.0"
+      }
+    }
+    </script>
+    <style>
+      :root {
+        --tet-red-deep: #7c0000;
+        --tet-red-primary: #d91b1b;
+        --tet-gold-imperial: #b8860b;
+        --tet-gold-bright: #ffcc00;
+        --tet-ivory: #fffdf5;
+        --slate-900: #0f172a;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--tet-ivory);
+        color: var(--slate-900);
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      .font-display { font-family: 'Playfair Display', serif; }
+
+      .premium-card {
+        background: white;
+        border: 1px solid rgba(124, 0, 0, 0.08);
+        box-shadow: 0 10px 40px -10px rgba(124, 0, 0, 0.05);
+        border-radius: 2rem;
+      }
+
+      .gold-text-shimmer {
+        background: linear-gradient(to right, #b8860b 20%, #ffcc00 40%, #ffcc00 60%, #b8860b 80%);
+        background-size: 200% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 3s linear infinite;
+        font-weight: 900;
+      }
+
+      @keyframes shine { to { background-position: 200% center; } }
+
+      .nav-blur {
+        background: rgba(255, 253, 245, 0.85);
+        backdrop-filter: saturate(180%) blur(20px);
+      }
+
+      .bottom-nav-active {
+        color: var(--tet-red-primary);
+        transform: translateY(-4px);
+      }
+
+      .bottom-nav-active::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        width: 4px;
+        height: 4px;
+        background: var(--tet-red-primary);
+        border-radius: 50%;
+      }
+
+      /* Tăng độ sắc nét cho mobile */
+      @media (max-width: 768px) {
+        .premium-card { border-radius: 1.5rem; }
+        h1, h2, h3 { letter-spacing: -0.02em; }
+      }
+
+      .bg-tet-pattern {
+        background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l20 20-20 20L0 20z' fill='%23d91b1b' fill-opacity='0.015'/%3E%3C/svg%3E");
+      }
+      
+      .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-tet-pattern">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
