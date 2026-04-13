@@ -43,7 +43,7 @@ export const signInWithGoogle = async () => {
     if (error.code === 'auth/cancelled-by-user') {
       throw new Error("Yêu cầu đăng nhập đã bị hủy.");
     }
-    handleFirestoreError(error, OperationType.WRITE, `users/${auth.currentUser?.uid}`);
+    handleFirestoreError(error, OperationType.WRITE, `users/${auth.currentUser?.uid || 'unknown'}`);
     throw error;
   }
 };
