@@ -74,6 +74,15 @@ const ApiKeyModal: React.FC<{
         <h3 className="text-2xl font-black text-slate-900 mb-2">Cấu Hình API Key</h3>
         <p className="text-sm text-slate-500 font-medium mb-8 leading-relaxed">
           Sử dụng API Key cá nhân (Gemini API) để tăng giới hạn sử dụng và đảm bảo tính ổn định cao nhất.
+          <br />
+          <a 
+            href="https://aistudio.google.com/app/apikey" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-blue-600 font-bold hover:underline mt-2 inline-block"
+          >
+            👉 Nhấn vào đây để lấy API Key miễn phí
+          </a>
         </p>
         
         <div className="space-y-6">
