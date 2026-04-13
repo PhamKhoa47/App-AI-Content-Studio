@@ -69,7 +69,7 @@ const ApiKeyModal: React.FC<{
   return (
     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-6 animate-fade-in">
       <div className="bg-white rounded-[2.5rem] shadow-2xl max-w-md w-full p-10 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 blur-2xl"></div>
         
         <h3 className="text-2xl font-black text-slate-900 mb-2">Cấu Hình API Key</h3>
         <p className="text-sm text-slate-500 font-medium mb-8 leading-relaxed">
@@ -84,7 +84,7 @@ const ApiKeyModal: React.FC<{
               value={key}
               onChange={(e) => setKey(e.target.value)}
               placeholder="Nhập API Key của bạn..."
-              className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-red-500 focus:bg-white outline-none transition-all font-mono text-sm"
+              className="w-full px-6 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:bg-white outline-none transition-all font-mono text-sm"
             />
           </div>
           
@@ -97,7 +97,7 @@ const ApiKeyModal: React.FC<{
             </button>
             <button 
               onClick={() => onSave(key)}
-              className="flex-1 py-4 bg-red-600 text-white font-black rounded-2xl shadow-lg shadow-red-200 hover:bg-red-700 transition-all active:scale-95"
+              className="flex-1 py-4 bg-blue-600 text-white font-black rounded-2xl shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all active:scale-95"
             >
               LƯU LẠI
             </button>
@@ -122,7 +122,7 @@ const UserMenu: React.FC<{ user: User; onLogout: () => void; onOpenKey: () => vo
       >
         <img src={user.photoURL || ''} className="w-8 h-8 rounded-xl border border-slate-200 shadow-sm" alt="User" />
         <div className="text-left hidden md:block text-slate-900">
-          <p className="text-[10px] font-black uppercase tracking-widest text-red-600 leading-none mb-1">Thành viên</p>
+          <p className="text-[10px] font-black uppercase tracking-widest text-blue-600 leading-none mb-1">Thành viên</p>
           <p className="text-xs font-bold truncate max-w-[100px] leading-none">{user.displayName}</p>
         </div>
         <svg className={`w-4 h-4 text-slate-500 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7"/></svg>
@@ -148,9 +148,9 @@ const UserMenu: React.FC<{ user: User; onLogout: () => void; onOpenKey: () => vo
               </button>
               <button 
                 onClick={() => { onLogout(); setIsOpen(false); }}
-                className="w-full flex items-center gap-3 p-4 hover:bg-red-50 rounded-2xl transition-colors text-red-600 font-bold text-sm"
+                className="w-full flex items-center gap-3 p-4 hover:bg-slate-100 rounded-2xl transition-colors text-blue-600 font-bold text-sm"
               >
-                <div className="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-slate-100 text-blue-600 flex items-center justify-center">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                 </div>
                 Đăng xuất
@@ -181,8 +181,8 @@ class ErrorBoundary extends Component<{ children: React.ReactNode }, { hasError:
     if (this.state.hasError) {
       return (
         <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
-          <div className="bg-white p-10 rounded-[2.5rem] shadow-xl max-w-md w-full text-center border border-red-100">
-            <div className="w-20 h-20 bg-red-50 rounded-3xl flex items-center justify-center mx-auto mb-6">
+          <div className="bg-white p-10 rounded-[2.5rem] shadow-xl max-w-md w-full text-center border border-slate-200">
+            <div className="w-20 h-20 bg-slate-100 rounded-3xl flex items-center justify-center mx-auto mb-6">
               <span className="text-4xl">⚠️</span>
             </div>
             <h2 className="text-2xl font-black text-slate-800 mb-4 tracking-tight">Đã có lỗi xảy ra</h2>
@@ -191,7 +191,7 @@ class ErrorBoundary extends Component<{ children: React.ReactNode }, { hasError:
             </p>
             <button 
               onClick={() => window.location.reload()}
-              className="w-full py-4 bg-red-600 text-white font-black rounded-2xl shadow-lg shadow-red-200 hover:bg-red-700 transition-all"
+              className="w-full py-4 bg-blue-600 text-white font-black rounded-2xl shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all"
             >
               TẢI LẠI TRANG
             </button>
@@ -546,12 +546,12 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 15l7-7 7 7"/></svg>
       </button>
-      <div className={`min-h-screen flex flex-col transition-all duration-700 bg-tet-pattern pb-24 lg:pb-0 ${!user ? 'blur-md pointer-events-none select-none' : ''}`}>
+      <div className={`min-h-screen flex flex-col transition-all duration-700 bg-slate-50 pb-24 lg:pb-0 ${!user ? 'blur-md pointer-events-none select-none' : ''}`}>
       
       {/* Compact Sticky Header */}
       <header className="bg-white/90 backdrop-blur-xl sticky top-0 z-[60] border-b border-slate-200 shadow-sm px-4 py-3 lg:px-8 lg:py-4 flex items-center justify-between transition-all">
           <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-800 rounded-xl flex items-center justify-center text-white shadow-lg shadow-red-200">
+              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
               </div>
               <div>
@@ -563,14 +563,14 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
           <div className="flex items-center gap-3 lg:gap-6">
               {user ? (
                   <>
-                      <button onClick={() => navigate("/offer")} className="hidden sm:flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-5 py-3 rounded-xl font-black text-sm transition-all shadow-lg shadow-amber-200 active:scale-95">
+                      <button onClick={() => navigate("/offer")} className="hidden sm:flex items-center gap-2 bg-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white px-5 py-3 rounded-xl font-black text-sm transition-all shadow-lg shadow-indigo-200 active:scale-95">
                           <span className="text-lg leading-none">🎁</span>
                           Nhận Ưu Đãi
                       </button>
                       <UserMenu user={user} onLogout={handleLogout} onOpenKey={handleOpenKeySelector} />
                   </>
               ) : (
-                  <button onClick={() => navigate("/login")} className="hidden sm:flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-5 py-3 rounded-xl font-black text-sm transition-all shadow-lg shadow-red-200 active:scale-95">
+                  <button onClick={() => navigate("/login")} className="hidden sm:flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl font-black text-sm transition-all shadow-lg shadow-blue-200 active:scale-95">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M11 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                       Đăng Nhập
                   </button>
@@ -614,12 +614,12 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
                               }}
                               className={`w-full text-left p-4 rounded-2xl transition-all flex items-center gap-4 border-2 ${
                                   mode === opt.id 
-                                  ? 'bg-red-50 border-red-200 text-red-700' 
+                                  ? 'bg-slate-100 border-blue-200 text-blue-700' 
                                   : 'bg-transparent border-transparent text-slate-600 hover:bg-slate-50'
                               }`}
                           >
                               <span className={`text-2xl w-12 h-12 flex items-center justify-center rounded-xl ${
-                                   mode === opt.id ? 'bg-red-600 text-white shadow-lg shadow-red-200' : 'bg-slate-100 text-slate-500'
+                                   mode === opt.id ? 'bg-blue-600 text-white shadow-lg shadow-blue-200' : 'bg-slate-100 text-slate-500'
                               }`}>{opt.icon}</span>
                               <div>
                                   <span className="block text-base font-black tracking-tight">{opt.label}</span>
@@ -631,14 +631,14 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
                   
                   {!user ? (
                       <div className="mt-8 pt-8 border-t border-slate-100">
-                          <button onClick={() => { setIsMobileMenuOpen(false); navigate("/login"); }} className="w-full py-4 bg-red-600 text-white rounded-2xl font-black text-lg shadow-xl shadow-red-200 flex items-center justify-center gap-3 active:scale-95 transition-all">
+                          <button onClick={() => { setIsMobileMenuOpen(false); navigate("/login"); }} className="w-full py-4 bg-blue-600 text-white rounded-2xl font-black text-lg shadow-xl shadow-blue-200 flex items-center justify-center gap-3 active:scale-95 transition-all">
                               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M11 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                               Đăng Nhập Ngay
                           </button>
                       </div>
                   ) : (
                       <div className="mt-8 pt-8 border-t border-slate-100">
-                          <button onClick={() => { setIsMobileMenuOpen(false); navigate("/offer"); }} className="w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-2xl font-black text-lg shadow-xl shadow-amber-200 flex items-center justify-center gap-3 active:scale-95 transition-all">
+                          <button onClick={() => { setIsMobileMenuOpen(false); navigate("/offer"); }} className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black text-lg shadow-xl shadow-indigo-200 flex items-center justify-center gap-3 active:scale-95 transition-all">
                               <span className="text-2xl leading-none">🎁</span>
                               Nhận Ưu Đãi Ngay
                           </button>
@@ -652,16 +652,16 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
       <div className="container mx-auto max-w-[1600px] px-4 lg:px-8 py-6 lg:py-12 flex-grow">
         {/* Error Warning Banners */}
         {(hasQuotaError || hasPermissionError) && (
-            <div className="mb-10 p-6 lg:p-10 bg-amber-50 border-2 border-amber-200 rounded-[2.5rem] shadow-2xl animate-bounce-slow flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="mb-10 p-6 lg:p-10 bg-indigo-50 border-2 border-indigo-200 rounded-[2.5rem] shadow-2xl animate-bounce-slow flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="flex items-center gap-6 text-center md:text-left">
-                    <div className="w-16 h-16 bg-amber-500 rounded-[1.5rem] flex items-center justify-center text-white shadow-xl shadow-amber-200 shrink-0">
+                    <div className="w-16 h-16 bg-indigo-500 rounded-[1.5rem] flex items-center justify-center text-white shadow-xl shadow-indigo-200 shrink-0">
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                     </div>
                     <div>
-                        <h4 className="text-xl font-black text-amber-900 leading-tight mb-2">
+                        <h4 className="text-xl font-black text-indigo-900 leading-tight mb-2">
                             {hasPermissionError ? "Lỗi Quyền Truy Cập (403 Forbidden)" : "Hết Hạn Mức Miễn Phí (429 Quota)"}
                         </h4>
-                        <p className="text-sm font-bold text-amber-700/80 leading-relaxed max-w-xl">
+                        <p className="text-sm font-bold text-indigo-700/80 leading-relaxed max-w-xl">
                             {hasPermissionError 
                               ? "API Key hiện tại không có quyền sử dụng model cao cấp này. Vui lòng sử dụng API Key từ Project Google Cloud đã bật Billing (thanh toán)." 
                               : "Hạn mức API Key hệ thống đã hết. Để duy trì chất lượng 2K và bảo tồn nhận diện, vui lòng sử dụng API Key cá nhân trả phí của bạn."}
@@ -670,7 +670,7 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
                 </div>
                 <button 
                     onClick={handleOpenKeySelector}
-                    className="shrink-0 px-8 py-4 bg-amber-600 hover:bg-amber-700 text-white font-black text-sm rounded-2xl shadow-xl transition-all active:scale-95 flex items-center gap-3"
+                    className="shrink-0 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-black text-sm rounded-2xl shadow-xl transition-all active:scale-95 flex items-center gap-3"
                 >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
                     THAY ĐỔI API KEY TRẢ PHÍ
@@ -683,8 +683,8 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
           {/* Desktop Sidebar Navigation */}
           <aside className="hidden lg:block lg:col-span-3 space-y-8">
             <div className="premium-card p-8 bg-white/80 backdrop-blur-xl sticky top-48">
-                <div className="flex items-center gap-4 mb-8 pb-4 border-b border-red-50">
-                    <div className="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white shadow-lg">
+                <div className="flex items-center gap-4 mb-8 pb-4 border-b border-slate-100">
+                    <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M4 6h16M4 12h16m-7 6h7"/></svg>
                     </div>
                     <h2 className="text-lg font-black text-slate-900">Creative Hub</h2>
@@ -697,15 +697,15 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
                             onClick={() => { setMode(opt.id as any); resetOutput(); }}
                             className={`w-full group text-left p-4 rounded-2xl transition-all flex items-center gap-4 border-2 ${
                                 mode === opt.id 
-                                ? 'bg-white border-red-500 shadow-xl shadow-red-100 scale-105 z-10' 
-                                : 'bg-transparent border-transparent hover:bg-red-50/50 text-slate-500'
+                                ? 'bg-white border-blue-500 shadow-xl shadow-slate-200 scale-105 z-10' 
+                                : 'bg-transparent border-transparent hover:bg-slate-100/50 text-slate-500'
                             }`}
                         >
                             <span className={`text-xl w-12 h-12 flex items-center justify-center rounded-xl transition-all duration-500 ${
-                                 mode === opt.id ? 'bg-red-600 text-white shadow-lg' : 'bg-slate-100 text-slate-400'
+                                 mode === opt.id ? 'bg-blue-600 text-white shadow-lg' : 'bg-slate-100 text-slate-400'
                             }`}>{opt.icon}</span>
                             <div>
-                                <span className={`block text-sm font-black tracking-tight ${mode === opt.id ? 'text-red-700' : 'text-slate-800'}`}>{opt.label}</span>
+                                <span className={`block text-sm font-black tracking-tight ${mode === opt.id ? 'text-blue-700' : 'text-slate-800'}`}>{opt.label}</span>
                                 <span className="block text-[10px] font-bold mt-0.5 opacity-60 uppercase">{opt.desc}</span>
                             </div>
                         </button>
@@ -718,7 +718,7 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
           <section className="lg:col-span-4 order-1 lg:order-2">
             <div className="premium-card p-6 lg:p-10 bg-white">
                 <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-red-50 text-red-600 border border-red-100 shadow-sm">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-slate-100 text-blue-600 border border-slate-200 shadow-sm">
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
                     </div>
                     <div>
@@ -740,7 +740,7 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
                               <p className="text-center text-slate-400 py-10 font-bold">Chưa có nội dung nào được lưu.</p>
                             ) : (
                               savedItems.map(item => (
-                                <div key={item.id} className="p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-red-200 transition-all cursor-pointer group" onClick={() => {
+                                <div key={item.id} className="p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all cursor-pointer group" onClick={() => {
                                   if (item.type === 'ad') {
                                     setAdImageStatus({ status: 'completed', results: JSON.parse(item.content) });
                                   } else {
@@ -754,11 +754,11 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
                                 }}>
                                   <div className="flex justify-between items-start">
                                     <div>
-                                      <span className="text-[10px] font-black text-red-600 uppercase tracking-widest">{item.type}</span>
+                                      <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest">{item.type}</span>
                                       <h4 className="font-bold text-slate-800 line-clamp-1">{item.title}</h4>
                                       <p className="text-[10px] text-slate-400 mt-1">{item.createdAt?.seconds ? new Date(item.createdAt.seconds * 1000).toLocaleString() : 'Đang lưu...'}</p>
                                     </div>
-                                    <span className="opacity-0 group-hover:opacity-100 transition-opacity text-red-600">➔</span>
+                                    <span className="opacity-0 group-hover:opacity-100 transition-opacity text-blue-600">➔</span>
                                   </div>
                                 </div>
                               ))
@@ -828,7 +828,7 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
                                             console.error('Lỗi tải ảnh:', e);
                                             alert('Không thể tải ảnh. Vui lòng thử lại.');
                                         }
-                                    }} className="px-6 py-3 bg-white text-red-700 rounded-2xl font-black shadow-xl transition-all hover:scale-110 flex items-center gap-3">
+                                    }} className="px-6 py-3 bg-white text-blue-700 rounded-2xl font-black shadow-xl transition-all hover:scale-110 flex items-center gap-3">
                                         TẢI ARTWORK 2K
                                     </button>
                                 </div>
@@ -852,7 +852,7 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
                     {affiliateResult && (
                         <div className="premium-card p-8 space-y-6">
                             <h3 className="text-xl font-black text-slate-900 leading-none">Master Consistency Flow</h3>
-                            <div className="bg-slate-50 p-6 rounded-2xl font-mono text-[11px] text-slate-800 leading-relaxed border border-red-50 select-all shadow-inner">
+                            <div className="bg-slate-50 p-6 rounded-2xl font-mono text-[11px] text-slate-800 leading-relaxed border border-slate-100 select-all shadow-inner">
                                 {affiliateResult.masterFlowPrompt}
                             </div>
                         </div>
@@ -880,8 +880,8 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
              )}
 
              {!isLoading && pages.length === 0 && adImageStatus.results.length === 0 && (
-                <div className="flex flex-col items-center justify-center text-center p-12 bg-white rounded-[3rem] border border-red-50/50 shadow-sm animate-fade-in">
-                    <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
+                <div className="flex flex-col items-center justify-center text-center p-12 bg-white rounded-[3rem] border border-slate-100/50 shadow-sm animate-fade-in">
+                    <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mb-6">
                         <svg className="w-8 h-8 text-red-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
                     <h3 className="text-lg font-black text-slate-800">Studio PK Sẵn Sàng</h3>
@@ -933,7 +933,7 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
           ) : (
               <button 
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className="w-full py-4 bg-gradient-to-r from-red-600 to-red-800 text-white rounded-2xl font-black text-lg shadow-xl shadow-red-200 flex items-center justify-center gap-3 active:scale-95 transition-transform"
+                  className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-2xl font-black text-lg shadow-xl shadow-blue-200 flex items-center justify-center gap-3 active:scale-95 transition-transform"
               >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                   BẮT ĐẦU SÁNG TẠO
@@ -941,13 +941,13 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
           )}
       </div>
 
-      <footer className="mt-12 mb-20 lg:mb-0 border-t-2 border-red-50 bg-white">
+      <footer className="mt-12 mb-20 lg:mb-0 border-t-2 border-slate-100 bg-white">
         {/* Support Section */}
         <div className="bg-gradient-to-r from-red-950 via-red-900 to-red-950 text-white px-4 py-8 lg:px-10 lg:py-10 shadow-inner">
             <div className="container mx-auto max-w-[1600px] flex flex-col md:flex-row items-center justify-between gap-8">
                 <div className="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
                     <div className="relative shrink-0">
-                        <div className="absolute -inset-2 bg-gradient-to-r from-amber-500 to-red-600 rounded-2xl blur-lg opacity-40 animate-pulse"></div>
+                        <div className="absolute -inset-2 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-2xl blur-lg opacity-40 animate-pulse"></div>
                         <div className="relative w-24 h-24 lg:w-32 lg:h-32 bg-white p-1.5 rounded-2xl shadow-2xl border-2 border-white/20 overflow-hidden">
                             <img 
                             src="https://img.vietqr.io/image/BIDV-6320410146-compact2.jpg?amount=99000&addInfo=Moi%20Khoa%20Cafe%202026&accountName=PHAM%20VAN%20KHOA" 
@@ -964,7 +964,7 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
                             Mời <span className="gold-text-shimmer">Phạm Khoa cafe 99k</span>
                         </h2>
                         </div>
-                        <p className="text-xs lg:text-sm font-bold text-red-200 mb-1">
+                        <p className="text-xs lg:text-sm font-bold text-blue-200 mb-1">
                             Ủng hộ tác giả duy trì server AI và phát triển tính năng mới
                         </p>
                         <p className="text-[10px] lg:text-xs font-black text-red-400 uppercase tracking-widest">
@@ -976,7 +976,7 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
                 <div className="hidden lg:flex flex-col items-end gap-2">
                     <div className="flex items-center gap-4">
                         <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center border border-white/10 backdrop-blur-md">
-                            <svg className="w-7 h-7 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd"/></svg>
+                            <svg className="w-7 h-7 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd"/></svg>
                         </div>
                         <div className="text-right">
                             <p className="text-xl font-black text-white leading-none">Phạm Văn Khoa</p>
@@ -987,7 +987,7 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
             </div>
         </div>
         <div className="container mx-auto px-8 py-12 flex flex-col items-center gap-8 text-center">
-            <p className="text-2xl lg:text-3xl font-display italic font-black text-red-800 tracking-widest uppercase">Phạm Khoa</p>
+            <p className="text-2xl lg:text-3xl font-display italic font-black text-blue-800 tracking-widest uppercase">Phạm Khoa</p>
             <p className="text-[10px] text-slate-400 font-black uppercase tracking-[0.3em]">
                 Copyright © 2026 Phạm Khoa
             </p>
@@ -1020,7 +1020,7 @@ const App: React.FC = () => {
   if (!isAuthReady) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }

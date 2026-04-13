@@ -7,7 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      base: './', // Hỗ trợ deploy lên sub-folder hoặc non-root domain
+      base: '/', // Hỗ trợ deploy lên custom domain
       server: {
         port: 3000,
         host: '0.0.0.0',
@@ -66,7 +66,6 @@ export default defineConfig(({ mode }) => {
               'vendor-react': ['react', 'react-dom'],
               'vendor-firebase': ['firebase/app', 'firebase/auth', 'firebase/firestore'],
               'vendor-genai': ['@google/genai'],
-              'vendor-sentry': ['@sentry/react'],
               'vendor-ga': ['react-ga4'],
             },
           },

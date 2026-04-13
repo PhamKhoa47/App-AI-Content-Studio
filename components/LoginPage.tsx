@@ -38,8 +38,8 @@ const LoginPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6 relative overflow-hidden">
       {/* Background Orbs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 rounded-full -mr-64 -mt-64 blur-[120px] animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-600/10 rounded-full -ml-64 -mb-64 blur-[120px] animate-pulse-slow"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full -mr-64 -mt-64 blur-[120px] animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/10 rounded-full -ml-64 -mb-64 blur-[120px] animate-pulse-slow"></div>
 
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -47,13 +47,13 @@ const LoginPage: React.FC = () => {
         className="bg-white rounded-[3.5rem] shadow-2xl max-w-md w-full overflow-hidden relative border border-white/20 z-10"
       >
         <div className="p-10 lg:p-14 text-center">
-          <div className="w-24 h-24 bg-red-50 rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-xl border border-red-100">
-            <svg className="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-24 h-24 bg-slate-100 rounded-[2.5rem] flex items-center justify-center mx-auto mb-8 shadow-xl border border-slate-200">
+            <svg className="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
             </svg>
           </div>
           
-          <h2 className="text-3xl lg:text-4xl font-black text-slate-900 mb-4 tracking-tight">Đăng Nhập <span className="text-red-600">PK Hub</span></h2>
+          <h2 className="text-3xl lg:text-4xl font-black text-slate-900 mb-4 tracking-tight">Đăng Nhập <span className="text-blue-600">PK Hub</span></h2>
           <p className="text-slate-500 font-medium mb-10 leading-relaxed text-lg">
             Tham gia cộng đồng sáng tạo nội dung AI chuyên nghiệp để lưu trữ lịch sử và sử dụng các tính năng nâng cao.
           </p>
@@ -61,10 +61,10 @@ const LoginPage: React.FC = () => {
           <button 
             onClick={handleLogin}
             disabled={isLoading}
-            className="w-full py-5 bg-white border-2 border-slate-100 hover:border-red-500 rounded-2xl text-slate-900 font-black text-lg shadow-xl transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-5 bg-white border-2 border-slate-100 hover:border-blue-500 rounded-2xl text-slate-900 font-black text-lg shadow-xl transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-4 group disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? (
-              <div className="w-6 h-6 border-4 border-red-600 border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-6 h-6 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
             ) : (
               <>
                 <svg className="w-6 h-6" viewBox="0 0 24 24">

@@ -36,14 +36,14 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             className={`pointer-events-auto min-w-[300px] p-4 rounded-2xl shadow-2xl border flex items-center gap-3 animate-slide-in-right ${
               toast.type === 'success' ? 'bg-emerald-50 border-emerald-100 text-emerald-800' :
               toast.type === 'error' ? 'bg-rose-50 border-rose-100 text-rose-800' :
-              toast.type === 'warning' ? 'bg-amber-50 border-amber-100 text-amber-800' :
+              toast.type === 'warning' ? 'bg-indigo-50 border-indigo-100 text-amber-800' :
               'bg-indigo-50 border-indigo-100 text-indigo-800'
             }`}
           >
             <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
               toast.type === 'success' ? 'bg-emerald-500 text-white' :
               toast.type === 'error' ? 'bg-rose-500 text-white' :
-              toast.type === 'warning' ? 'bg-amber-500 text-white' :
+              toast.type === 'warning' ? 'bg-indigo-500 text-white' :
               'bg-indigo-500 text-white'
             }`}>
               {toast.type === 'success' && <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>}

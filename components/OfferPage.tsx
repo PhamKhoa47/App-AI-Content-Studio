@@ -33,8 +33,8 @@ const OfferPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-500/5 rounded-full -mr-80 -mt-80 blur-[100px]"></div>
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-amber-500/5 rounded-full -ml-80 -mb-80 blur-[100px]"></div>
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full -mr-80 -mt-80 blur-[100px]"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-500/5 rounded-full -ml-80 -mb-80 blur-[100px]"></div>
 
       <AnimatePresence mode="wait">
         {isPreparing ? (
@@ -45,7 +45,7 @@ const OfferPage: React.FC = () => {
             exit={{ opacity: 0 }}
             className="text-center z-10"
           >
-            <div className="w-24 h-24 border-8 border-red-100 border-t-red-600 rounded-full animate-spin mx-auto mb-8"></div>
+            <div className="w-24 h-24 border-8 border-slate-200 border-t-blue-600 rounded-full animate-spin mx-auto mb-8"></div>
             <h2 className="text-2xl font-black text-slate-800 uppercase tracking-widest animate-pulse">
               Đang chuẩn bị ưu đãi...
             </h2>
@@ -63,7 +63,7 @@ const OfferPage: React.FC = () => {
             </div>
             
             <div className="p-12 lg:p-20 text-center relative">
-              <div className="w-28 h-28 bg-red-50 rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-red-100 border border-red-100">
+              <div className="w-28 h-28 bg-slate-100 rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-slate-200 border border-slate-200">
                 <span className="text-6xl">🎁</span>
               </div>
               
@@ -78,7 +78,7 @@ const OfferPage: React.FC = () => {
               <div className="space-y-6">
                 <button 
                   onClick={handleClaimOffer}
-                  className="w-full py-5 bg-gradient-to-r from-red-600 to-red-800 rounded-2xl text-white font-black text-xl shadow-xl shadow-red-200 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 group"
+                  className="w-full py-5 bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl text-white font-black text-xl shadow-xl shadow-blue-200 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 group"
                 >
                   <span className="text-2xl">🎁</span>
                   NHẬN ƯU ĐÃI NGAY

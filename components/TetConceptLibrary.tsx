@@ -7,8 +7,8 @@ interface TetConceptLibraryProps {
 }
 
 const tetGroupMetadata: Record<string, { icon: string; color: string; desc: string }> = {
-  "TẾT TRUYỀN THỐNG": { icon: "🧧", color: "bg-red-600", desc: "Nét đẹp văn hóa cổ truyền Việt Nam" },
-  "XUÂN BÍNH NGỌ 2026": { icon: "🐎", color: "bg-amber-500", desc: "Linh vật Ngựa - Tăng tốc & Bứt phá" },
+  "TẾT TRUYỀN THỐNG": { icon: "🧧", color: "bg-blue-600", desc: "Nét đẹp văn hóa cổ truyền Việt Nam" },
+  "XUÂN BÍNH NGỌ 2026": { icon: "🐎", color: "bg-indigo-500", desc: "Linh vật Ngựa - Tăng tốc & Bứt phá" },
   "TẾT GIA ĐÌNH": { icon: "👨‍👩‍👧‍👦", color: "bg-emerald-600", desc: "Quây quần bên những người thân yêu" },
   "DOANH NHÂN - KHAI XUÂN": { icon: "💼", color: "bg-indigo-600", desc: "Đẳng cấp lãnh đạo & Khởi đầu thịnh vượng" },
   "CỔ PHỤC - CUNG ĐÌNH": { icon: "👑", color: "bg-orange-600", desc: "Vẻ đẹp quý phái thời phong kiến" },
@@ -215,16 +215,16 @@ const TetConceptLibrary: React.FC<TetConceptLibraryProps> = ({ onSelect }) => {
       </div>
 
       {/* Identity Security Footer */}
-      <div className="p-8 bg-red-50 border border-red-100 rounded-[2.5rem] shadow-xl shadow-red-100/20">
+      <div className="p-8 bg-slate-100 border border-slate-200 rounded-[2.5rem] shadow-xl shadow-slate-200/20">
           <div className="flex items-start gap-5">
-              <div className="w-12 h-12 bg-red-600 rounded-2xl shadow-sm flex items-center justify-center text-white text-2xl shrink-0">🛡️</div>
+              <div className="w-12 h-12 bg-blue-600 rounded-2xl shadow-sm flex items-center justify-center text-white text-2xl shrink-0">🛡️</div>
               <div>
                   <p className="text-sm font-extrabold text-red-900 uppercase tracking-tight">Cam kết từ Phạm Khoa:</p>
                   <p className="text-[12px] text-slate-600 font-medium mt-2 leading-relaxed">
                       "Thuật toán <strong>Identity-Lock PK-2026</strong> sử dụng <i>pixel-matching</i> để đảm bảo các đặc điểm như: khoảng cách mắt, độ cao sống mũi, dáng môi và lỗ chân lông của bạn được giữ nguyên. Chúng tôi cam kết <strong>không Face-Swap</strong> (không thay đầu), chỉ thay đổi bối cảnh nghệ thuật."
                   </p>
                   <div className="flex items-center gap-4 mt-4">
-                      <span className="text-[10px] font-bold text-red-600 uppercase tracking-widest bg-white px-3 py-1 rounded-lg border border-red-100">Verified by PK-Face 2026</span>
+                      <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest bg-white px-3 py-1 rounded-lg border border-slate-200">Verified by PK-Face 2026</span>
                   </div>
               </div>
           </div>
