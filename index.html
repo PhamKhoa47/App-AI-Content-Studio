@@ -5,21 +5,64 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Phạm Khoa 2026 | Viral Content Intelligence Suite</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script type="importmap">
+    <title>PK Creative Hub | AI Content Intelligence Suite 2026</title>
+    <meta name="description" content="Nền tảng AI sáng tạo nội dung chuyên nghiệp: Viết truyện, kịch bản, bài báo và thiết kế quảng cáo 2K. Tối ưu cho chiến dịch Marketing và Affiliate 2026." />
+    <meta name="keywords" content="AI Content, Sáng tạo nội dung, Viết truyện AI, Kịch bản TikTok, Quảng cáo AI, Affiliate Marketing, PK Creative Hub" />
+    <meta name="author" content="Phạm Khoa" />
+    
+    <script>
+      // Fix for "Uncaught TypeError: Cannot set property fetch of #<Window> which has only a getter"
+      // This happens when libraries try to monkey-patch fetch in restricted environments.
+      (function() {
+        const _originalFetch = window.fetch;
+        try {
+          Object.defineProperty(window, 'fetch', {
+            get: function() { return _originalFetch; },
+            set: function(v) { console.warn('Blocked attempt to overwrite window.fetch'); },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          // If already non-configurable, we can't do much here, 
+          // but usually this script running first allows us to set the descriptor.
+        }
+      })();
+    </script>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ais-dev-vzjicrj4bocoxr5mqgss2p-675940381018.asia-southeast1.run.app/" />
+    <meta property="og:title" content="PK Creative Hub | AI Content Intelligence Suite 2026" />
+    <meta property="og:description" content="Nền tảng AI sáng tạo nội dung chuyên nghiệp: Viết truyện, kịch bản, bài báo và thiết kế quảng cáo 2K." />
+    <meta property="og:image" content="https://picsum.photos/seed/creative/1200/630" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ais-dev-vzjicrj4bocoxr5mqgss2p-675940381018.asia-southeast1.run.app/" />
+    <meta property="twitter:title" content="PK Creative Hub | AI Content Intelligence Suite 2026" />
+    <meta property="twitter:description" content="Nền tảng AI sáng tạo nội dung chuyên nghiệp: Viết truyện, kịch bản, bài báo và thiết kế quảng cáo 2K." />
+    <meta property="twitter:image" content="https://picsum.photos/seed/creative/1200/630" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
     {
-      "imports": {
-        "react": "https://aistudiocdn.com/react@^19.1.1",
-        "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
-        "react/": "https://aistudiocdn.com/react@^19.1.1/",
-        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.20.0"
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PK Creative Hub",
+      "url": "https://ais-dev-vzjicrj4bocoxr5mqgss2p-675940381018.asia-southeast1.run.app/",
+      "description": "Nền tảng AI sáng tạo nội dung chuyên nghiệp: Viết truyện, kịch bản, bài báo và thiết kế quảng cáo 2K.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "All",
+      "author": {
+        "@type": "Person",
+        "name": "Phạm Khoa"
       }
     }
     </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <style>
       :root {
         --tet-red-deep: #7c0000;
@@ -92,7 +135,6 @@
       
       .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
     </style>
-  <link rel="stylesheet" href="/index.css">
 </head>
   <body class="bg-tet-pattern">
     <div id="root"></div>

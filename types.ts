@@ -157,4 +157,4 @@ export interface TetConcept {
   previewColor: string;
 }
 
-export type AppMode = 'story' | 'article' | 'script' | 'ad' | 'affiliate' | 'tet_2026';
+export type AppMode = 'story' | 'article' | 'script' | 'ad' | 'affiliate' | 'tet_2026' | 'history';

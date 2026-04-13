@@ -241,7 +241,7 @@ const AdImageForm: React.FC<AdImageFormProps> = ({
         </div>
 
         <button type="submit" disabled={isLoading || formState.files.length === 0}
-            className="w-full py-6 rounded-3xl font-black text-white text-[15px] shadow-2xl transition-all active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3 bg-gradient-to-r from-red-600 to-red-800">
+            className="btn-primary w-full py-6 rounded-3xl text-[15px] flex items-center justify-center gap-3">
             {isLoading ? <div className="w-6 h-6 border-3 border-white/40 border-t-white rounded-full animate-spin"></div> : "KẾT XUẤT ẢNH QUẢNG CÁO TẾT"}
         </button>
       </form>

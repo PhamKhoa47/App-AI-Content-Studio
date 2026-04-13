@@ -122,7 +122,7 @@ const AffiliateScriptForm: React.FC<AffiliateScriptFormProps> = ({ onSubmit, isL
       <button 
         type="submit" 
         disabled={isLoading}
-        className="btn-primary w-full py-5 rounded-[1.5rem] font-extrabold text-white text-sm shadow-xl transition-all active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3"
+        className="btn-primary w-full py-5 rounded-[1.5rem] flex items-center justify-center gap-3"
       >
         {isLoading ? (
             <>

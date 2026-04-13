@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { useToast } from './Toast';
 import type { StoryPage, VoiceProfile, ScenePrompt } from '../types';
 
 interface StoryViewerProps {
@@ -24,11 +25,13 @@ interface StoryViewerProps {
 
 const StoryViewer: React.FC<StoryViewerProps> = ({ 
     pages, 
+    fullStoryText,
     voiceProfile, 
     synopsis, 
     title,
     scenePrompts,
 }) => {
+    const { showToast } = useToast();
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
@@ -79,6 +82,34 @@ const StoryViewer: React.FC<StoryViewerProps> = ({
         }
     };
 
+    const handleCopy = () => {
+        if (!fullStoryText) return;
+        navigator.clipboard.writeText(fullStoryText).then(() => {
+            showToast("Đã sao chép toàn bộ nội dung!", "success");
+        }).catch(() => {
+            showToast("Không thể sao chép nội dung.", "error");
+        });
+    };
+
+    const handleDownload = () => {
+        if (!fullStoryText) return;
+        const blob = new Blob([fullStoryText], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = `${title.replace(/\s+/g, '_')}.txt`;
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+        
+        setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 1000);
+        showToast("Đã tải xuống file văn bản!", "success");
+    };
+
     return (
         <div className="space-y-10 animate-fade-in relative">
             {/* Main Content Container */}
@@ -100,29 +131,39 @@ const StoryViewer: React.FC<StoryViewerProps> = ({
                             </div>
                         )}
                     </div>
-                    <button onClick={handleToggleVoice} 
-                        className={`flex items-center gap-3 px-6 py-3.5 rounded-2xl font-bold text-sm transition-all shadow-xl active:scale-95 ${
-                            isPlaying 
-                            ? 'bg-indigo-600 text-white shadow-indigo-200' 
-                            : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-100'
-                        }`}
-                    >
-                        {isPlaying ? (
-                            <>
-                                <div className="flex gap-0.5">
-                                    <div className="w-1 h-3 bg-white animate-[bounce_1s_infinite_0.1s]"></div>
-                                    <div className="w-1 h-3 bg-white animate-[bounce_1s_infinite_0.2s]"></div>
-                                    <div className="w-1 h-3 bg-white animate-[bounce_1s_infinite_0.3s]"></div>
-                                </div>
-                                Dừng Nghe
-                            </>
-                        ) : (
-                            <>
-                                <svg className="w-5 h-5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.983 5.983 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.984 3.984 0 00-1.172-2.828a1 1 0 010-1.415z"/></svg>
-                                Nghe AI Đọc
-                            </>
-                        )}
-                    </button>
+                    <div className="flex items-center gap-3">
+                        <button onClick={handleCopy} title="Sao chép toàn bộ"
+                            className="p-3.5 rounded-2xl bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-100 transition-all active:scale-95">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                        </button>
+                        <button onClick={handleDownload} title="Tải xuống file .txt"
+                            className="p-3.5 rounded-2xl bg-slate-50 text-slate-500 hover:bg-slate-100 border border-slate-100 transition-all active:scale-95">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        </button>
+                        <button onClick={handleToggleVoice} 
+                            className={`flex items-center gap-3 px-6 py-3.5 rounded-2xl font-bold text-sm transition-all shadow-xl active:scale-95 ${
+                                isPlaying 
+                                ? 'bg-indigo-600 text-white shadow-indigo-200' 
+                                : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-100'
+                            }`}
+                        >
+                            {isPlaying ? (
+                                <>
+                                    <div className="flex gap-0.5">
+                                        <div className="w-1 h-3 bg-white animate-[bounce_1s_infinite_0.1s]"></div>
+                                        <div className="w-1 h-3 bg-white animate-[bounce_1s_infinite_0.2s]"></div>
+                                        <div className="w-1 h-3 bg-white animate-[bounce_1s_infinite_0.3s]"></div>
+                                    </div>
+                                    Dừng Nghe
+                                </>
+                            ) : (
+                                <>
+                                    <svg className="w-5 h-5 text-indigo-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.983 5.983 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.984 3.984 0 00-1.172-2.828a1 1 0 010-1.415z"/></svg>
+                                    Nghe AI Đọc
+                                </>
+                            )}
+                        </button>
+                    </div>
                 </div>
                 
                 <div className="bg-[#fcfdfe] p-10 md:p-14 rounded-[3rem] min-h-[350px] flex items-start border border-slate-100 shadow-inner shadow-slate-100/30 relative">

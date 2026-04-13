@@ -16,7 +16,7 @@ const VEO_MODEL = "veo-3.1-fast-generate-preview";
 
 // Hàm khởi tạo instance mới để đảm bảo lấy API Key mới nhất từ window.aistudio hoặc custom key
 const getAI = (customApiKey?: string) => {
-  const apiKey = customApiKey || process.env.API_KEY;
+  const apiKey = customApiKey || process.env.GEMINI_API_KEY;
   if (!apiKey) throw new Error("MISSING_API_KEY");
   return new GoogleGenAI({ apiKey });
 };

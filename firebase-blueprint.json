@@ -10,6 +10,8 @@
         "displayName": { "type": "string" },
         "photoURL": { "type": "string" },
         "customApiKey": { "type": "string", "description": "Optional user-provided Gemini API key" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "lastLogin": { "type": "string", "format": "date-time" },
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["uid", "email"]

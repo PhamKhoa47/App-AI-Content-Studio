@@ -17,29 +17,89 @@ export const signInWithGoogle = async () => {
     const userRef = doc(db, 'users', user.uid);
     const userSnap = await getDoc(userRef);
     
+    const profileData = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      lastLogin: serverTimestamp()
+    };
+
     if (!userSnap.exists()) {
       await setDoc(userRef, {
-        uid: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        photoURL: user.photoURL,
+        ...profileData,
+        role: 'user',
         createdAt: serverTimestamp()
       });
     } else {
       // Update existing profile (optional, e.g. update photoURL)
-      await setDoc(userRef, {
-        displayName: user.displayName,
-        photoURL: user.photoURL,
-      }, { merge: true });
+      await setDoc(userRef, profileData, { merge: true });
     }
     return user;
-  } catch (error) {
-    console.error("Error signing in with Google:", error);
+  } catch (error: any) {
+    if (error.code === 'auth/popup-closed-by-user') {
+      throw new Error("Đăng nhập bị hủy bởi người dùng.");
+    }
+    if (error.code === 'auth/cancelled-by-user') {
+      throw new Error("Yêu cầu đăng nhập đã bị hủy.");
+    }
+    handleFirestoreError(error, OperationType.WRITE, `users/${auth.currentUser?.uid}`);
     throw error;
   }
 };
 
 export const logout = () => signOut(auth);
+
+export enum OperationType {
+  CREATE = 'create',
+  UPDATE = 'update',
+  DELETE = 'delete',
+  LIST = 'list',
+  GET = 'get',
+  WRITE = 'write',
+}
+
+export interface FirestoreErrorInfo {
+  error: string;
+  operationType: OperationType;
+  path: string | null;
+  authInfo: {
+    userId?: string;
+    email?: string | null;
+    emailVerified?: boolean;
+    isAnonymous?: boolean;
+    tenantId?: string | null;
+    providerInfo: {
+      providerId: string;
+      displayName: string | null;
+      email: string | null;
+      photoUrl: string | null;
+    }[];
+  }
+}
+
+export function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null) {
+  const errInfo: FirestoreErrorInfo = {
+    error: error instanceof Error ? error.message : String(error),
+    authInfo: {
+      userId: auth.currentUser?.uid,
+      email: auth.currentUser?.email,
+      emailVerified: auth.currentUser?.emailVerified,
+      isAnonymous: auth.currentUser?.isAnonymous,
+      tenantId: auth.currentUser?.tenantId,
+      providerInfo: auth.currentUser?.providerData.map(provider => ({
+        providerId: provider.providerId,
+        displayName: provider.displayName,
+        email: provider.email,
+        photoUrl: provider.photoURL
+      })) || []
+    },
+    operationType,
+    path
+  }
+  console.error('Firestore Error: ', JSON.stringify(errInfo));
+  throw new Error(JSON.stringify(errInfo));
+}
 
 // Connection test
 async function testConnection() {
@@ -53,5 +113,5 @@ async function testConnection() {
 }
 testConnection();
 
-export { onAuthStateChanged, collection, query, where, onSnapshot, doc, setDoc, getDoc, serverTimestamp, orderBy };
+export { onAuthStateChanged, collection, query, where, onSnapshot, doc, setDoc, getDoc, serverTimestamp, orderBy, getDocFromServer };
 export type { User };

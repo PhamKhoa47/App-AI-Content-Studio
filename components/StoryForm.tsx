@@ -65,10 +65,10 @@ const StoryForm: React.FC<StoryFormProps> = ({ formState, onFormChange, onSubmit
             type="button"
             key={option}
             onClick={() => handleOptionChange(name, option)}
-            className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
+            className={`px-4 py-2 text-xs rounded-xl transition-all duration-300 border-2 ${
               isActive
-                ? 'bg-indigo-600 text-white font-bold shadow-md shadow-indigo-100'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200'
+                ? 'bg-indigo-600 border-indigo-600 text-white font-bold shadow-lg shadow-indigo-100 scale-105'
+                : 'bg-white border-slate-100 text-slate-500 hover:border-indigo-200 hover:text-indigo-500'
             }`}
           >
             {option}
@@ -87,10 +87,10 @@ const StoryForm: React.FC<StoryFormProps> = ({ formState, onFormChange, onSubmit
             type="button"
             key={option}
             onClick={() => handleSingleOptionChange(name, option)}
-            className={`px-3 py-1.5 text-xs rounded-lg transition-all ${
+            className={`px-4 py-2 text-xs rounded-xl transition-all duration-300 border-2 ${
               isActive
-                ? 'bg-indigo-600 text-white font-bold shadow-md shadow-indigo-100'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200'
+                ? 'bg-indigo-600 border-indigo-600 text-white font-bold shadow-lg shadow-indigo-100 scale-105'
+                : 'bg-white border-slate-100 text-slate-500 hover:border-indigo-200 hover:text-indigo-500'
             }`}
           >
             {option}
@@ -102,56 +102,77 @@ const StoryForm: React.FC<StoryFormProps> = ({ formState, onFormChange, onSubmit
 
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="space-y-2">
-        <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">1. Ý tưởng cốt lõi</label>
+    <form onSubmit={handleSubmit} className="space-y-8">
+      <div className="space-y-3">
+        <div className="flex items-center justify-between">
+            <label className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">1. Ý tưởng cốt lõi</label>
+            <span className="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded-md">Bắt buộc</span>
+        </div>
         <textarea
           name="theme"
           rows={6}
           value={formState.theme}
           onChange={handleChange}
-          className="w-full bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 text-slate-700 p-4 transition-all text-sm resize-none"
-          placeholder="Mô tả ý tưởng của bạn..."
+          className="w-full bg-slate-50 border-2 border-slate-100 rounded-[2rem] focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 text-slate-700 p-6 transition-all text-sm resize-none shadow-inner"
+          placeholder="Ví dụ: Một chú rồng nhỏ sợ lửa đi tìm kiếm lòng dũng cảm trong khu rừng pha lê..."
           required
         />
       </div>
 
-      <div className="space-y-4">
-        <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Thể loại</label>
+      <div className="space-y-6">
+        <div className="space-y-3">
+            <label className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">Thể loại</label>
             {renderMultiSelectOptions('genre', storyGenres)}
         </div>
-        <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Phong cách</label>
+        <div className="space-y-3">
+            <label className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">Phong cách văn học</label>
             {renderMultiSelectOptions('style', storyStyles)}
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Độ tuổi</label>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="space-y-3">
+            <label className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">Đối tượng</label>
             {renderSingleSelectOptions('age', ageOptions)}
         </div>
-        <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Số chương</label>
-            <input
-                name="chapters"
-                type="number"
-                value={formState.chapters}
-                onChange={handleNumberChange}
-                min="1"
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-sm text-slate-700"
-                required
-            />
+        <div className="space-y-3">
+            <label className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">Quy mô (Số chương)</label>
+            <div className="relative">
+                <input
+                    name="chapters"
+                    type="number"
+                    value={formState.chapters}
+                    onChange={handleNumberChange}
+                    min="1"
+                    max="20"
+                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl p-4 text-sm font-bold text-slate-700 focus:border-indigo-500 transition-all"
+                    required
+                />
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-300 uppercase">Chương</div>
+            </div>
         </div>
       </div>
 
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 rounded-2xl font-bold text-white shadow-xl shadow-indigo-100 transition-all active:scale-95 disabled:opacity-50"
+        className="btn-primary w-full py-5 rounded-[2rem] group"
       >
-        {isLoading ? 'Đang khởi tạo...' : 'Tiến hành sáng tác'}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+        <span className="relative flex items-center justify-center gap-3">
+            {isLoading ? (
+                <>
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    Đang khởi tạo thế giới...
+                </>
+            ) : (
+                <>
+                    <span className="text-lg">✨</span>
+                    Tiến hành sáng tác
+                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                </>
+            )}
+        </span>
       </button>
     </form>
   );

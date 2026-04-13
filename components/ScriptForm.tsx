@@ -87,8 +87,8 @@ const CharacterModal: React.FC<{
                     </div>
 
                     <div className="flex justify-end gap-3 pt-4">
-                        <button type="button" onClick={onClose} className="py-3 px-6 rounded-2xl bg-slate-50 text-slate-500 font-bold text-xs hover:bg-slate-100 transition-all">Hủy</button>
-                        <button type="submit" className="py-3 px-8 rounded-2xl bg-indigo-600 text-white font-bold text-xs shadow-xl shadow-indigo-100 hover:bg-indigo-700 transition-all">Xác nhận</button>
+                        <button type="button" onClick={onClose} className="py-4 px-6 rounded-2xl bg-slate-50 text-slate-500 font-bold text-xs hover:bg-slate-100 transition-all">Hủy</button>
+                        <button type="submit" className="py-4 px-8 rounded-2xl bg-indigo-600 text-white font-bold text-xs shadow-xl shadow-indigo-100 hover:bg-indigo-700 transition-all">Xác nhận</button>
                     </div>
                 </form>
             </div>
@@ -287,7 +287,7 @@ const ScriptForm: React.FC<ScriptFormProps> = ({ onSubmit, isLoading }) => {
             )}
         </div>
 
-        <button type="submit" onClick={handleSubmit} disabled={isLoading} className="btn-primary w-full py-5 rounded-[1.5rem] font-extrabold text-white text-sm shadow-xl transition-all active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3 mt-4">
+        <button type="submit" onClick={handleSubmit} disabled={isLoading} className="btn-primary w-full py-5 rounded-[1.5rem] flex items-center justify-center gap-3 mt-4">
             {isLoading ? <><div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> Đang biên kịch...</> : <><span>🎬</span> Tạo Kịch Bản Sản Xuất</>}
         </button>
       </div>
