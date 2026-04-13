@@ -63,7 +63,7 @@ function handleGeminiError(error: unknown, context: string): Error {
     const msg = error instanceof Error ? error.message : String(error);
     
     if (msg === "MISSING_API_KEY") {
-        return new Error("Chưa tìm thấy API Key. Vui lòng thiết lập khóa API.");
+        return new Error("Chưa tìm thấy API Key. Vui lòng thiết lập khóa API bằng cách nhấn vào biểu tượng bánh răng ở góc màn hình và dán API Key của bạn vào. Bạn có thể lấy key miễn phí tại: https://aistudio.google.com/app/apikey");
     }
     if (msg === "QUOTA_EXCEEDED") {
         return new Error("Hạn mức của API Key này đã hết. Vui lòng chuyển sang API Key trả phí.");
