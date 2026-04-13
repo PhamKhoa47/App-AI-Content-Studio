@@ -7,7 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      base: '/', // Hỗ trợ deploy lên custom domain
+      base: './', // Hỗ trợ deploy lên GitHub Pages (cả custom domain và subpath)
       server: {
         port: 3000,
         host: '0.0.0.0',
