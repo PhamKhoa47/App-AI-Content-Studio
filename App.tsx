@@ -290,7 +290,7 @@ const MainApp: React.FC<{ user: User | null }> = ({ user }) => {
   // Initialize GA4
   useEffect(() => {
     if (process.env.GA_MEASUREMENT_ID) {
-      ReactGA.initialize(process.env.GA_MEASUREMENT_ID);
+      // ReactGA.initialize(process.env.GA_MEASUREMENT_ID);
     }
   }, []);
 

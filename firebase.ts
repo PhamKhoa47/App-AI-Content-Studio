@@ -111,7 +111,7 @@ async function testConnection() {
     }
   }
 }
-testConnection();
+// testConnection();
 
 export { onAuthStateChanged, collection, query, where, onSnapshot, doc, setDoc, getDoc, serverTimestamp, orderBy, getDocFromServer };
 export type { User };
