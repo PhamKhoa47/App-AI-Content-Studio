@@ -63,10 +63,10 @@ function handleGeminiError(error: unknown, context: string): Error {
     const msg = error instanceof Error ? error.message : String(error);
     
     if (msg === "MISSING_API_KEY") {
-        return new Error("Chưa tìm thấy API Key. Vui lòng thiết lập khóa API bằng cách nhấn vào biểu tượng bánh răng ở góc màn hình và dán API Key của bạn vào. Bạn có thể lấy key miễn phí tại: https://aistudio.google.com/app/apikey");
+        return new Error("Chưa tìm thấy API Key. Vui lòng nhấn vào biểu tượng bánh răng ở góc màn hình để cấu hình API Key. Bạn có thể lấy key miễn phí tại: https://aistudio.google.com/app/apikey");
     }
     if (msg === "QUOTA_EXCEEDED") {
-        return new Error("Hạn mức của API Key này đã hết. Vui lòng chuyển sang API Key trả phí.");
+        return new Error("Hạn mức sử dụng miễn phí đã hết. Vui lòng nhấn vào biểu tượng bánh răng ở góc màn hình và nhập API Key cá nhân của bạn để tiếp tục sử dụng.");
     }
     if (msg === "PERMISSION_DENIED") {
         return new Error("Lỗi 403: API Key này không có quyền sử dụng model AI sáng tạo ảnh (Nano Banana). Hãy đảm bảo bạn dùng API Key từ Google AI Studio (ai.google.dev) và Project đã bật Billing.");
